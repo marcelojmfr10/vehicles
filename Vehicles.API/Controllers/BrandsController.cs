@@ -1,25 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
 
 namespace Vehicles.API.Controllers
 {
-    public class VehicleTypesController : Controller
+    public class BrandsController : Controller
     {
         private readonly DataContext _context;
 
-        public VehicleTypesController(DataContext context)
+        public BrandsController(DataContext context)
         {
-            _context = context;
+            this._context = context;
         }
 
         // GET: VehicleTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.VehicleTypes.ToListAsync());
+            return View(await _context.Brands.ToListAsync());
         }
 
         // GET: VehicleTypes/Create
@@ -33,13 +35,13 @@ namespace Vehicles.API.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VehicleType vehicleType)
+        public async Task<IActionResult> Create(Brand brand)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Add(vehicleType);
+                    _context.Add(brand);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -47,7 +49,7 @@ namespace Vehicles.API.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplica"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de vehículo");
+                        ModelState.AddModelError(string.Empty, "Ya existe esta marca");
                     }
                     else
                     {
@@ -59,7 +61,7 @@ namespace Vehicles.API.Controllers
                     ModelState.AddModelError(string.Empty, exception.Message);
                 }
             }
-            return View(vehicleType);
+            return View(brand);
         }
 
         // GET: VehicleTypes/Edit/5
@@ -70,12 +72,12 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes.FindAsync(id);
-            if (vehicleType == null)
+            Brand brand = await _context.Brands.FindAsync(id);
+            if (brand == null)
             {
                 return NotFound();
             }
-            return View(vehicleType);
+            return View(brand);
         }
 
         // POST: VehicleTypes/Edit/5
@@ -83,9 +85,9 @@ namespace Vehicles.API.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, VehicleType vehicleType)
+        public async Task<IActionResult> Edit(int id, Brand brand)
         {
-            if (id != vehicleType.Id)
+            if (id != brand.Id)
             {
                 return NotFound();
             }
@@ -94,7 +96,7 @@ namespace Vehicles.API.Controllers
             {
                 try
                 {
-                    _context.Update(vehicleType);
+                    _context.Update(brand);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -102,7 +104,7 @@ namespace Vehicles.API.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplica"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de vehículo");
+                        ModelState.AddModelError(string.Empty, "Ya existe esta marca");
                     }
                     else
                     {
@@ -115,7 +117,7 @@ namespace Vehicles.API.Controllers
                 }
 
             }
-            return View(vehicleType);
+            return View(brand);
         }
 
         // GET: VehicleTypes/Delete/5
@@ -126,33 +128,17 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes
+            Brand brand = await _context.Brands
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (vehicleType == null)
+            if (brand == null)
             {
                 return NotFound();
             }
 
             //return View(vehicleType);
-            _context.VehicleTypes.Remove(vehicleType);
+            _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        //// POST: VehicleTypes/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var vehicleType = await _context.VehicleTypes.FindAsync(id);
-        //    _context.VehicleTypes.Remove(vehicleType);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool VehicleTypeExists(int id)
-        //{
-        //    return _context.VehicleTypes.Any(e => e.Id == id);
-        //}
     }
 }
