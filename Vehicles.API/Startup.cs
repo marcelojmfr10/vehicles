@@ -47,6 +47,9 @@ namespace Vehicles.API
             services.AddTransient<SeedDb>();
             // inyectar y que el ciclo de vida (lo llama y lo mata por cada petición)
             services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<ICombosHelper, CombosHelper>();
+            services.AddScoped<IBlobHelper, BlobHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             // singleton permenece todo el ciclo de vida en memoria
         }
 
