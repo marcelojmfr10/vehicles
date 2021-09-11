@@ -27,5 +27,6 @@ namespace Vehicles.API.Helpers
         Task<IdentityResult> ConfirmEmailAsync(User user, string token);
         Task<string> GeneratePasswordResetTokenAsync(User user);
         Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+        Task<SignInResult> ValidatePasswordAsync(User user, string password);
     }
 }
