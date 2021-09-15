@@ -15,47 +15,47 @@ namespace Vehicles.API.Controllers.API
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProceduresController : ControllerBase
+    public class DocumentTypesController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public ProceduresController(DataContext context)
+        public DocumentTypesController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/Procedures
+        // GET: api/DocumentTypes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Procedure>>> GetProcedures()
+        public async Task<ActionResult<IEnumerable<DocumentType>>> GetDocumentTypes()
         {
-            return await _context.Procedures.OrderBy(x => x.Description).ToListAsync();
+            return await _context.DocumentTypes.OrderBy(x => x.Description).ToListAsync();
         }
 
-        // GET: api/Procedures/5
+        // GET: api/DocumentTypes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Procedure>> GetProcedure(int id)
+        public async Task<ActionResult<DocumentType>> GetDocumentType(int id)
         {
-            var procedure = await _context.Procedures.FindAsync(id);
+            var documentType = await _context.DocumentTypes.FindAsync(id);
 
-            if (procedure == null)
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            return procedure;
+            return documentType;
         }
 
-        // PUT: api/Procedures/5
+        // PUT: api/DocumentTypes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProcedure(int id, Procedure procedure)
+        public async Task<IActionResult> PutDocumentType(int id, DocumentType documentType)
         {
-            if (id != procedure.Id)
+            if (id != documentType.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(procedure).State = EntityState.Modified;
+            _context.Entry(documentType).State = EntityState.Modified;
 
             try
             {
@@ -66,35 +66,7 @@ namespace Vehicles.API.Controllers.API
             {
                 if (dbUpdateException.InnerException.Message.Contains("duplica"))
                 {
-                    return BadRequest("Ya existe este procedimiento");
-                }
-                else
-                {
-                   return BadRequest(dbUpdateException.InnerException.Message);
-                }
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception.Message);
-            }
-        }
-
-        // POST: api/Procedures
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Procedure>> PostProcedure(Procedure procedure)
-        {
-            _context.Procedures.Add(procedure);
-            try
-            {
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetProcedure", new { id = procedure.Id }, procedure);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                if (dbUpdateException.InnerException.Message.Contains("duplica"))
-                {
-                    return BadRequest("Ya existe este procedimiento");
+                    return BadRequest("Ya existe este tipo de documento");
                 }
                 else
                 {
@@ -107,17 +79,45 @@ namespace Vehicles.API.Controllers.API
             }
         }
 
-        // DELETE: api/Procedures/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProcedure(int id)
+        // POST: api/DocumentTypes
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<DocumentType>> PostDocumentType(DocumentType documentType)
         {
-            var procedure = await _context.Procedures.FindAsync(id);
-            if (procedure == null)
+            _context.DocumentTypes.Add(documentType);
+            try
+            {
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetDocumentType", new { id = documentType.Id }, documentType);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                if (dbUpdateException.InnerException.Message.Contains("duplica"))
+                {
+                    return BadRequest("Ya existe este tipo de documento");
+                }
+                else
+                {
+                    return BadRequest(dbUpdateException.InnerException.Message);
+                }
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
+
+        // DELETE: api/DocumentTypes/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDocumentType(int id)
+        {
+            var documentType = await _context.DocumentTypes.FindAsync(id);
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            _context.Procedures.Remove(procedure);
+            _context.DocumentTypes.Remove(documentType);
             await _context.SaveChangesAsync();
 
             return NoContent();
