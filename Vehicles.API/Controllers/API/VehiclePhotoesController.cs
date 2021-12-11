@@ -23,8 +23,8 @@ namespace Vehicles.API.Controllers.API
 
         public VehiclePhotoesController(DataContext context, IBlobHelper blobHelper)
         {
-            this._context = context;
-            this._blobHelper = blobHelper;
+            _context = context;
+            _blobHelper = blobHelper;
         }
 
         [HttpPost]
