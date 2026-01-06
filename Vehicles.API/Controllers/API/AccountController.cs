@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Vehicles.API.Data.Entities;
-using Vehicles.API.Helpers;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.API.Models;
 
 namespace Vehicles.API.Controllers.API

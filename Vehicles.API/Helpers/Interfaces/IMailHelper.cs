@@ -1,6 +1,6 @@
 ﻿using Vehicles.Common.Models;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Interfaces
 {
     public interface IMailHelper
     {

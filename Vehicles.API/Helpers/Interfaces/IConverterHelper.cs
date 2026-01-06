@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Vehicles.API.Data.Entities;
 using Vehicles.API.Models;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Interfaces
 {
     public interface IConverterHelper
     {

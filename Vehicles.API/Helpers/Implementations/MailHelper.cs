@@ -2,9 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using System;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.Common.Models;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Implementations
 {
     public class MailHelper : IMailHelper
     {

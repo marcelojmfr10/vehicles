@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vehicles.API.Data.Entities;
-using Vehicles.API.Helpers;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.Common.Enums;
 
 namespace Vehicles.API.Data

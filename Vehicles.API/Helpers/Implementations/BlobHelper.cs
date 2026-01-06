@@ -5,8 +5,9 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Vehicles.API.Helpers.Interfaces;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Implementations
 {
     public class BlobHelper : IBlobHelper
     {

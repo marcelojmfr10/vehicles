@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
-using Vehicles.API.Helpers;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.API.Models;
 using Vehicles.Common.Enums;
 using Vehicles.Common.Models;

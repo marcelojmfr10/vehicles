@@ -4,10 +4,11 @@ using System;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.API.Models;
 using Vehicles.Common.Enums;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Implementations
 {
     public class UserHelper : IUserHelper
     {

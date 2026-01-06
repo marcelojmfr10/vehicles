@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Interfaces
 {
     public interface IBlobHelper
     {

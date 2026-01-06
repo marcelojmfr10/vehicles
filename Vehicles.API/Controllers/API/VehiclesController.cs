@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
-using Vehicles.API.Helpers;
+using Vehicles.API.Helpers.Interfaces;
 using Vehicles.API.Models.Requests;
 
 namespace Vehicles.API.Controllers.API

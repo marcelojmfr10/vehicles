@@ -9,12 +9,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
-using Vehicles.API.Helpers;
+using Vehicles.API.Helpers.Interfaces;
 using Microsoft.Extensions.Azure;
 using Azure.Storage.Queues;
 using Azure.Storage.Blobs;
 using Azure.Core.Extensions;
 using System;
+using Vehicles.API.Helpers.Implementations;
 
 namespace Vehicles.API
 {

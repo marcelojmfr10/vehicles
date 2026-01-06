@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Vehicles.API.Data;
+using Vehicles.API.Helpers.Interfaces;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Implementations
 {
     public class CombosHelper : ICombosHelper
     {

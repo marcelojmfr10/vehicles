@@ -5,7 +5,7 @@ using Vehicles.API.Data.Entities;
 using Vehicles.API.Models;
 using Vehicles.Common.Enums;
 
-namespace Vehicles.API.Helpers
+namespace Vehicles.API.Helpers.Interfaces
 {
     public interface IUserHelper
     {
