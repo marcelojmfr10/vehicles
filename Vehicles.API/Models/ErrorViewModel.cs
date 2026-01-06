@@ -1,5 +1,3 @@
-using System;
-
 namespace Vehicles.API.Models
 {
     public class ErrorViewModel

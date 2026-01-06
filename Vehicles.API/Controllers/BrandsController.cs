@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
@@ -20,19 +18,16 @@ namespace Vehicles.API.Controllers
             this._context = context;
         }
 
-        // GET: VehicleTypes
         public async Task<IActionResult> Index()
         {
             return View(await _context.Brands.ToListAsync());
         }
 
-        // GET: VehicleTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: VehicleTypes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +61,6 @@ namespace Vehicles.API.Controllers
             return View(brand);
         }
 
-        // GET: VehicleTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,7 +76,6 @@ namespace Vehicles.API.Controllers
             return View(brand);
         }
 
-        // POST: VehicleTypes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -122,7 +115,6 @@ namespace Vehicles.API.Controllers
             return View(brand);
         }
 
-        // GET: VehicleTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,7 +129,6 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            //return View(vehicleType);
             _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

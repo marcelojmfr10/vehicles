@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Vehicles.API.Helpers
 {
@@ -12,6 +9,5 @@ namespace Vehicles.API.Helpers
         IEnumerable<SelectListItem> GetComboProcedures();
         IEnumerable<SelectListItem> GetComboVehicleTypes();
         IEnumerable<SelectListItem> GetComboBrands();
-
     }
 }
